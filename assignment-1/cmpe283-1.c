@@ -17,6 +17,13 @@
 #define IA32_VMX_EXIT_CTLS	0x483
 #define IA32_VMX_ENTRY_CTLS	0x484
 
+#define IA32_VMX_TRUE_PINBASED_CTLS 0x48D
+#define IA32_VMX_TRUE_PROCBASED_CTLS 0x48E
+#define IA32_VMX_TRUE_EXIT_CTLS 0x48F
+#define IA32_VMX_TRUE_ENTRY_CTLS 0x490
+
+#define IA32_VMX_BASIC_CTLS 0x480
+
 /*
  * struct caapability_info
  *
@@ -186,12 +193,56 @@ detect_vmx_features(void)
 {
 	uint32_t lo, hi;
 
+	rdmsr(IA32_VMX_BASIC_CTLS, lo, hi);
+	pr_info("Basic Controls MSR: 0x%llx\n",
+		(uint64_t)(lo | (uint64_t)hi << 32));
+
+	if(!(hi & (1 << 23))){
+		print_normal_situation();
+	}else{
+		print_true_situation();
+	}
+}
+
+void print_true_situation(){
+	uint32_t lo, hi;
+	/* Pinbased true controls */
+	rdmsr(IA32_VMX_TRUE_PINBASED_CTLS, lo, hi);
+	pr_info("Pinbased Controls MSR: 0x%llx\n",
+		(uint64_t)(lo | (uint64_t)hi << 32));
+	report_capability(pinbased, 5, lo, hi);
+	/* procbased true controls */
+	rdmsr(IA32_VMX_TRUE_PROCBASED_CTLS, lo, hi);
+	pr_info("procbased Controls MSR: 0x%llx\n",
+		(uint64_t)(lo | (uint64_t)hi << 32));
+	report_capability(procbased, 21, lo, hi);
+
+	// /* Secondary Processor-Based VM-Execution true Controls */
+	// rdmsr(IA32_VMX_PROCBASED_CTLS2, lo, hi);
+	// pr_info("Secondary Processor-Based Controls MSR: 0x%llx\n",
+	// 	(uint64_t)(lo | (uint64_t)hi << 32));
+	// report_capability(procbased_2, 27, lo, hi);
+
+	/* VM Exit Control capabilities true Controls */
+	rdmsr(IA32_VMX_TRUE_EXIT_CTLS, lo, hi);
+	pr_info("VM Exit Controls MSR: 0x%llx\n",
+		(uint64_t)(lo | (uint64_t)hi << 32));
+	report_capability(vm_exit_controls, 14, lo, hi);
+
+	/* VM Entry Control capabilities true Controls */
+	rdmsr(IA32_VMX_TRUE_ENTRY_CTLS, lo, hi);
+	pr_info("VM Entry Controls MSR: 0x%llx\n",
+		(uint64_t)(lo | (uint64_t)hi << 32));
+	report_capability(vm_entry_controls, 12, lo, hi);	
+}
+
+void print_normal_situation(){
+	uint32_t lo, hi;
 	/* Pinbased controls */
 	rdmsr(IA32_VMX_PINBASED_CTLS, lo, hi);
 	pr_info("Pinbased Controls MSR: 0x%llx\n",
 		(uint64_t)(lo | (uint64_t)hi << 32));
 	report_capability(pinbased, 5, lo, hi);
-
 	/* procbased controls */
 	rdmsr(IA32_VMX_PROCBASED_CTLS, lo, hi);
 	pr_info("procbased Controls MSR: 0x%llx\n",
@@ -215,8 +266,6 @@ detect_vmx_features(void)
 	pr_info("VM Entry Controls MSR: 0x%llx\n",
 		(uint64_t)(lo | (uint64_t)hi << 32));
 	report_capability(vm_entry_controls, 12, lo, hi);	
-
-
 }
 
 /*
