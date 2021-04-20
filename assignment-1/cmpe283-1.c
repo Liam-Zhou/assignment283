@@ -191,6 +191,32 @@ detect_vmx_features(void)
 	pr_info("Pinbased Controls MSR: 0x%llx\n",
 		(uint64_t)(lo | (uint64_t)hi << 32));
 	report_capability(pinbased, 5, lo, hi);
+
+	/* procbased controls */
+	rdmsr(IA32_VMX_PROCBASED_CTLS, lo, hi);
+	pr_info("procbased Controls MSR: 0x%llx\n",
+		(uint64_t)(lo | (uint64_t)hi << 32));
+	report_capability(procbased, 21, lo, hi);
+
+	/* Secondary Processor-Based VM-Execution Controls */
+	rdmsr(IA32_VMX_PROCBASED_CTLS2, lo, hi);
+	pr_info("Secondary Processor-Based Controls MSR: 0x%llx\n",
+		(uint64_t)(lo | (uint64_t)hi << 32));
+	report_capability(procbased_2, 27, lo, hi);
+
+	/* VM Exit Control capabilities Controls */
+	rdmsr(IA32_VMX_EXIT_CTLS, lo, hi);
+	pr_info("VM Exit Controls MSR: 0x%llx\n",
+		(uint64_t)(lo | (uint64_t)hi << 32));
+	report_capability(vm_exit_controls, 14, lo, hi);
+
+	/* VM Entry Control capabilities Controls */
+	rdmsr(IA32_VMX_ENTRY_CTLS, lo, hi);
+	pr_info("VM Entry Controls MSR: 0x%llx\n",
+		(uint64_t)(lo | (uint64_t)hi << 32));
+	report_capability(vm_entry_controls, 12, lo, hi);	
+
+
 }
 
 /*
