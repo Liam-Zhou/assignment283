@@ -182,29 +182,7 @@ report_capability(struct capability_info *cap, uint8_t len, uint32_t lo,
 		printk(msg);
 	}
 }
-
-/*
- * detect_vmx_features
- *
- * Detects and prints VMX capabilities of this host's CPU.
- */
-void
-detect_vmx_features(void)
-{
-	uint32_t lo, hi;
-
-	rdmsr(IA32_VMX_BASIC_CTLS, lo, hi);
-	pr_info("Basic Controls MSR: 0x%llx\n",
-		(uint64_t)(lo | (uint64_t)hi << 32));
-
-	if(!(hi & (1 << 23))){
-		print_normal_situation();
-	}else{
-		print_true_situation();
-	}
-}
-
-void print_true_situation(){
+void printTrue(void){
 	uint32_t lo, hi;
 	/* Pinbased true controls */
 	rdmsr(IA32_VMX_TRUE_PINBASED_CTLS, lo, hi);
@@ -236,7 +214,7 @@ void print_true_situation(){
 	report_capability(vm_entry_controls, 12, lo, hi);	
 }
 
-void print_normal_situation(){
+void printNormal(void){
 	uint32_t lo, hi;
 	/* Pinbased controls */
 	rdmsr(IA32_VMX_PINBASED_CTLS, lo, hi);
@@ -267,6 +245,29 @@ void print_normal_situation(){
 		(uint64_t)(lo | (uint64_t)hi << 32));
 	report_capability(vm_entry_controls, 12, lo, hi);	
 }
+
+
+/*
+ * detect_vmx_features
+ *
+ * Detects and prints VMX capabilities of this host's CPU.
+ */
+void
+detect_vmx_features(void)
+{
+	uint32_t lo, hi;
+
+	rdmsr(IA32_VMX_BASIC_CTLS, lo, hi);
+	pr_info("Basic Controls MSR: 0x%llx\n",
+		(uint64_t)(lo | (uint64_t)hi << 32));
+		
+	if((hi & (1 << 23))){
+		printTrue();
+	}else{
+		printNormal();
+	}
+}
+
 
 /*
  * init_module
