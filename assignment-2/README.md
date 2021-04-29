@@ -63,6 +63,6 @@ Does the number of exits increase at a stable rate? Or are there more exits perf
 
 - The number of exits increased every time executing the test file at a stable rate.
 
-Approximately how many exits does a full VM boot entail? 
+    Approximately how many exits does a full VM boot entail? 
 
 - Around 2600000 exits.
