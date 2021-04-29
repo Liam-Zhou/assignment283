@@ -1,10 +1,10 @@
 # CMPE283 assignment2:
-1. For each member in your team, provide 1 paragraph detailing what parts of the lab that member implemented / researched. (You may skip this question if you are doing the lab by yourself).
+## 1. For each member in your team, provide 1 paragraph detailing what parts of the lab that member implemented / researched. (You may skip this question if you are doing the lab by yourself).
 
   - I did this assignment by myself: 
   - Yilin Zhou (012571026)
 
-2. Describe in detail the steps you used to complete the assignment. Consider your reader to be someone skilled in software development but otherwise unfamiliar with the assignment. Good answers to this question will be recipes that someone can follow to reproduce your development steps.
+## 2. Describe in detail the steps you used to complete the assignment. Consider your reader to be someone skilled in software development but otherwise unfamiliar with the assignment. Good answers to this question will be recipes that someone can follow to reproduce your development steps.
 
 Step1: build the linux kernel successfully:
 
@@ -58,7 +58,7 @@ Step4: test file
 
 - Set the eax equal 0x4FFFFFFF, and get the related information in cpuid.c.
 
-3. Comment on the frequency of exits
+## 3. Comment on the frequency of exits
 Does the number of exits increase at a stable rate? Or are there more exits performed during certain VM operations?
 
 - The number of exits increased every time executing the test file at a stable rate.
