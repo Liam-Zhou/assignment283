@@ -1,8 +1,8 @@
 # CMPE283 assignment2:
 1. For each member in your team, provide 1 paragraph detailing what parts of the lab that member implemented / researched. (You may skip this question if you are doing the lab by yourself).
 
-  I did this assignment by myself: 
-  Yilin Zhou (012571026)
+  - I did this assignment by myself: 
+  - Yilin Zhou (012571026)
 
 2. Describe in detail the steps you used to complete the assignment. Consider your reader to be someone skilled in software development but otherwise unfamiliar with the assignment. Good answers to this question will be recipes that someone can follow to reproduce your development steps.
 Note: I may decide to follow these instructions for random assignments, so you should make sure they are accurate.
@@ -48,9 +48,9 @@ Counting the number and time length in vmx.c under /linux/arch/x86/kvm/vmx
 
 Step3: install nested VM
 
-Install related tools: sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
+ - Install related tools: sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
 
-sudo virt-install --name=innerMachine --description=innerMachine --ram=1536 --vcpus=2 --disk path=/home/***/YZ-WS.qcow2,size=30 --cdrom=/home/ubuntu-20.04.2-live-server-arm64.iso --graphics=vnc
+ - sudo virt-install --name=innerMachine --description=innerMachine --ram=1536 --vcpus=2 --disk path=/home/***/YZ-WS.qcow2,size=30 --cdrom=/home/ubuntu-20.04.2-live-server-arm64.iso --graphics=vnc
 
 
 Step4: test file
