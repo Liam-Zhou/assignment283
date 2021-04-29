@@ -43,7 +43,7 @@ printk(KERN_INFO "exit time = %llu", atomic64_read(&exit_time_length));
 kvm_cpuid(vcpu, &eax, &ebx, &ecx, &edx, false);
 }
 ```
-Counting the number and time length in vmx.c under /linux/arch/x86/kvm/vmx
+ - Counting the number and time length in vmx.c under /linux/arch/x86/kvm/vmx
 
 Step3: install nested VM
 
