@@ -5,7 +5,6 @@
   - Yilin Zhou (012571026)
 
 2. Describe in detail the steps you used to complete the assignment. Consider your reader to be someone skilled in software development but otherwise unfamiliar with the assignment. Good answers to this question will be recipes that someone can follow to reproduce your development steps.
-Note: I may decide to follow these instructions for random assignments, so you should make sure they are accurate.
 
 Step1: build the linux kernel successfully:
 
