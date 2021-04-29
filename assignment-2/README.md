@@ -48,8 +48,7 @@ kvm_cpuid(vcpu, &eax, &ebx, &ecx, &edx, false);
 Step3: install nested VM
 
  - Install related tools: sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
-
- - sudo virt-install --name=innerMachine --description=innerMachine --ram=1536 --vcpus=2 --disk path=/home/***/YZ-WS.qcow2,size=30 --cdrom=/home/ubuntu-20.04.2-live-server-arm64.iso --graphics=vnc
+ - use virt-manager if GUI is available or use this command: sudo virt-install --name=innerMachine --description=innerMachine --ram=1536 --vcpus=2 --disk path=/home/***/YZ-WS.qcow2,size=30 --cdrom=/home/ubuntu-20.04.2-live-server-arm64.iso --graphics=vnc
 
 
 Step4: test file
