@@ -57,9 +57,13 @@ Step4: test file
 
 - Set the eax equal 0x4FFFFFFF, and get the related information in cpuid.c.
 - test result:
+
   CPUID(0x4FFFFFFF), exits=10126103, cycles spent in exit=317819661
+  
   CPUID(0x4FFFFFFF), exits=10126935, cycles spent in exit=317832569
+  
   CPUID(0x4FFFFFFF), exits=10127687, cycles spent in exit=317847247
+  
   CPUID(0x4FFFFFFF), exits=10128384, cycles spent in exit=317859177
 
 ## 3. Comment on the frequency of exits
