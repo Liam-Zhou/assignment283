@@ -58,10 +58,10 @@ Step4: test file
 - Set the eax equal 0x4FFFFFFF, and get the related information in cpuid.c.
 
 ## 3. Comment on the frequency of exits
-Does the number of exits increase at a stable rate? Or are there more exits performed during certain VM operations?
+- Does the number of exits increase at a stable rate? Or are there more exits performed during certain VM operations?
+  
+  The number of exits increased every time executing the test file at a stable rate.
 
-- The number of exits increased every time executing the test file at a stable rate.
+- Approximately how many exits does a full VM boot entail? 
 
-    Approximately how many exits does a full VM boot entail? 
-
-- Around 2600000 exits.
+  Around 2600000 exits.
